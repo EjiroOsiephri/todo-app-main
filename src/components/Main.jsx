@@ -23,6 +23,7 @@ const Main = () => {
             setListValue([...listValue, inputValue])
             setInputValue('')
         }
+
     }
     document.addEventListener('keydown', handleKeyPress)
 
@@ -37,10 +38,16 @@ const Main = () => {
                 <div className={Styled["input-container"]}>
                     <div className={Styled.box}>
                         <input className={Styled.check} type="checkbox" />
-                        <input type="text" onChange={changeInput} placeholder='Create a new todo....' />
+                        <input type="text" value={inputValue} onChange={changeInput} placeholder='Create a new todo....' />
                     </div>
                 </div>
                 <div className={Styled["input"]}>
+                    <div className={Styled.regularInput}>
+                        <h3>1 item left</h3>
+                        <h3>active</h3>
+                        <h3>Completed</h3>
+                        <h3>Clear Completed</h3>
+                    </div>
                     {listValue.map((value, index) => {
                         return (
                             <div key={index} className={Styled['input-text-container']}>
