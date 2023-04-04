@@ -12,7 +12,7 @@ const Main = () => {
 
     return (
         <div className={Styled.main}>
-            <div className={Styled["main-bg"]}>
+            <div className={`${toggle ? Styled["main-bg"] : Styled["add-bg"]}`}>
                 <div className={Styled["typo-container"]}>
                     <h1>TODO</h1>
                     <img src={toggle ? NightImg : SunImg} onClick={handleToggle} />

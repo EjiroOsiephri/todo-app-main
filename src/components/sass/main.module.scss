@@ -38,8 +38,18 @@ $VeryDarkGrayishBlue: hsl(237, 14%, 26%);
   width: 30px;
   height: 30px;
 }
-@media (max-width: 675px) {
+.add-bg {
+  background-image: url("../images/bg-desktop-dark.jpg");
+  height: 300px;
+}
+@media (max-width: 375px) {
   .main-bg {
-    background-image: url("../images/bg-desktop-light.jpg");
+    background-image: url("../images/bg-mobile-light.jpg");
+    background-repeat: no-repeat;
+  }
+  .add-bg {
+    background-image: url("../images/bg-mobile-dark.jpg");
+    height: 300px;
+    background-repeat: no-repeat;
   }
 }
