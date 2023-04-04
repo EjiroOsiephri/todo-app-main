@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import React from 'react'
 import Main from './components/Main'
 
 
 function App() {
-  <React.Fragment>
-    <Main></Main>
-  </React.Fragment>
+  return (
+    <div>
+      <Main />
+    </div>
+  )
 }
 
 export default App

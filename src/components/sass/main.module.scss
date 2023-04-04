@@ -1,0 +1,45 @@
+$VeryDarkBlue: hsl(235, 21%, 11%);
+$VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+$LightGrayishBlue: hsl(234, 39%, 85%);
+$LightGrayishBlue: hsl(236, 33%, 92%);
+$DarkGrayishBlue: hsl(234, 11%, 52%);
+$VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+$VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+.main-bg {
+  background-image: url("../images/bg-desktop-light.jpg");
+  height: 300px;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+.typo-container h1 {
+  margin-right: 2em;
+  margin-bottom: 1em;
+  color: white;
+  letter-spacing: 5.5px;
+}
+.typo-container {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+.typo-container img {
+  object-fit: cover;
+  object-position: center;
+  width: 30px;
+  height: 30px;
+}
+@media (max-width: 675px) {
+  .main-bg {
+    background-image: url("../images/bg-desktop-light.jpg");
+  }
+}
