@@ -6,23 +6,28 @@ import SunImg from "../components/images/icon-sun.svg"
 const Main = () => {
     const [toggle, setToggle] = useState(true)
 
+    const [inputValue, setInputValue] = useState('')
+    const [listValue, setListValue] = useState([])
+
+    function changeInput(e) {
+        setInputValue(e.target.value);
+    }
+
+
     const handleToggle = () => {
         setToggle(!toggle)
     }
 
     const handleKeyPress = (event) => {
         if (event.keyCode === 13) {
-            console.log('ejiro')
+            setListValue([...listValue, inputValue])
+            setInputValue('')
         }
     }
+    document.addEventListener('keydown', handleKeyPress)
 
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress)
 
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress)
-        }
-    }, [])
+    console.log(listValue);
 
     return (
         <div className={Styled.main}>
@@ -33,7 +38,20 @@ const Main = () => {
                 </div>
                 <div className={Styled["input-container"]}>
                     <input type="checkbox" />
-                    <input type="text" placeholder='Create a new todo....' />
+                    <input type="text" onChange={changeInput} placeholder='Create a new todo....' />
+
+                    <div className="input">
+                        {listValue.map((value, index) => {
+                            return (
+                                <div key={index} className='input-container'>
+                                    <input type="checkbox" />
+                                    <h6>{value}</h6>
+                                </div>
+                            )
+
+                        })}
+                    </div>
+
                 </div>
             </div>
         </div>
