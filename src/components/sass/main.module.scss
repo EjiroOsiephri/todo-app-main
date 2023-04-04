@@ -54,8 +54,10 @@ input[type="checkbox"] {
   outline: none;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  margin-top: 0.5em;
-  transform: translateX(2em);
+}
+.check {
+  transform: translateY(2em);
+  margin-left: 0.6em;
 }
 
 input[type="checkbox"]:checked {
@@ -72,7 +74,7 @@ input[type="checkbox"]:checked::before {
   visibility: visible;
 }
 input[type="text"] {
-  width: 60%;
+  width: 100%;
   padding: 0.5em;
   border-radius: 10px;
   border: none;
@@ -80,6 +82,18 @@ input[type="text"] {
   color: $VeryDarkDesaturatedBlue;
   font-weight: 500;
   padding-left: 2em;
+  margin-bottom: 2em;
+}
+
+.input-text-container {
+  width: 60%;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 10px;
 }
 
 @media (max-width: 375px) {

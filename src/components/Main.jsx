@@ -27,8 +27,6 @@ const Main = () => {
     document.addEventListener('keydown', handleKeyPress)
 
 
-    console.log(listValue);
-
     return (
         <div className={Styled.main}>
             <div className={`${toggle ? Styled["main-bg"] : Styled["add-bg"]}`}>
@@ -37,21 +35,20 @@ const Main = () => {
                     <img src={toggle ? NightImg : SunImg} onClick={handleToggle} />
                 </div>
                 <div className={Styled["input-container"]}>
-                    <input type="checkbox" />
-                    <input type="text" onChange={changeInput} placeholder='Create a new todo....' />
-
-                    <div className="input">
-                        {listValue.map((value, index) => {
-                            return (
-                                <div key={index} className='input-container'>
-                                    <input type="checkbox" />
-                                    <h6>{value}</h6>
-                                </div>
-                            )
-
-                        })}
+                    <div className={Styled.box}>
+                        <input className={Styled.check} type="checkbox" />
+                        <input type="text" onChange={changeInput} placeholder='Create a new todo....' />
                     </div>
-
+                </div>
+                <div className={Styled["input"]}>
+                    {listValue.map((value, index) => {
+                        return (
+                            <div key={index} className={Styled['input-text-container']}>
+                                <input type="checkbox" />
+                                <h3>{value}</h3>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
