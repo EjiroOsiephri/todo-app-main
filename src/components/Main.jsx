@@ -27,6 +27,20 @@ const Main = () => {
     }
     document.addEventListener('keydown', handleKeyPress)
 
+    // Adding useEffect hook to set styles for body background
+
+    useEffect(() => {
+        if (!toggle) {
+            document.body.style.backgroundColor = 'hsl(235, 24%, 19%)'
+        } else {
+            document.body.style.backgroundColor = 'initial'
+        }
+
+        return () => {
+            document.body.style.backgroundColor = 'initial'
+        }
+    }, [toggle])
+
 
     return (
         <div className={Styled.main}>
@@ -38,7 +52,7 @@ const Main = () => {
                 <div className={Styled["input-container"]}>
                     <div className={Styled.box}>
                         <input className={Styled.check} type="checkbox" />
-                        <input type="text" value={inputValue} onChange={changeInput} placeholder='Create a new todo....' />
+                        <input type="text" className={toggle ? '' : Styled["add"]} value={inputValue} onChange={changeInput} placeholder='Create a new todo....' />
                     </div>
                 </div>
                 <div className={Styled["input"]}>

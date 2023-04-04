@@ -115,14 +115,35 @@ input[type="text"] {
 .input-text-container h3 {
   margin-right: 4rem;
 }
+.regularInput h3 {
+  margin-right: 0.7em;
+}
 .regularInput {
-  margin: 0 auto;
+  margin: 0.6em auto;
   display: flex;
   justify-content: space-between;
   width: 40%;
-  color: $LightGrayishBlue;
+  color: $VeryDarkDesaturatedBlue;
+  font-weight: 300;
   font-style: oblique;
   order: 2;
+
+  white-space: nowrap;
+}
+.regularInput h3 {
+  cursor: pointer;
+}
+.add {
+  background: $VeryDarkGrayishBlue;
+}
+.regularInput h3:hover {
+  color: hsl(236, 33%, 92%);
+}
+@media (min-width: 375px) and (max-width: 675px) {
+  .regularInput {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 @media (max-width: 375px) {
   .main-bg {
@@ -136,5 +157,9 @@ input[type="text"] {
   }
   input[type="text"] {
     font-size: 16px;
+  }
+  .regularInput {
+    flex-direction: column;
+    gap: 10px;
   }
 }
