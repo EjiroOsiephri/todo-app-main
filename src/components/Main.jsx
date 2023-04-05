@@ -29,6 +29,8 @@ const Main = () => {
 
     // Adding useEffect hook to set styles for body background
 
+
+
     useEffect(() => {
         if (!toggle) {
             document.body.style.backgroundColor = 'hsl(235, 24%, 19%)'
@@ -41,7 +43,9 @@ const Main = () => {
         }
     }, [toggle])
 
+    const numOfDivsWithInputTextContainerClass = listValue.length;
 
+    console.log(numOfDivsWithInputTextContainerClass);
     return (
         <div className={Styled.main}>
             <div className={`${toggle ? Styled["main-bg"] : Styled["add-bg"]}`}>
@@ -53,11 +57,12 @@ const Main = () => {
                     <div className={Styled.box}>
                         <input className={Styled.check} type="checkbox" />
                         <input type="text" className={toggle ? '' : Styled["add"]} value={inputValue} onChange={changeInput} placeholder='Create a new todo....' />
+                        {inputValue.trim() === '' && null}
                     </div>
                 </div>
                 <div className={Styled["input"]}>
-                    <div className={Styled.regularInput}>
-                        <h3>1 item left</h3>
+                    <div className={`${Styled.regularInput} ${toggle ? '' : Styled.add}`}>
+                        <h3>{numOfDivsWithInputTextContainerClass} item(s) left</h3>
                         <h3>active</h3>
                         <h3>Completed</h3>
                         <h3>Clear Completed</h3>
