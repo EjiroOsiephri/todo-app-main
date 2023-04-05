@@ -100,6 +100,9 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
 }
+.underline {
+  text-decoration: line-through;
+}
 
 .input-text-container {
   width: 60%;
