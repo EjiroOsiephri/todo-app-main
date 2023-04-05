@@ -53,16 +53,16 @@ const Main = () => {
             h3Element.style.textDecoration = "none";
             h3Element.style.color = "hsl(235, 19%, 35%)";
         }
-        console.log(element);
+        console.log(id);
     }
 
     useEffect(() => {
         const divsWithLineThrough = document.querySelectorAll('.input-text-container h3[style*="text-decoration: line-through"]');
         const numOfDivsWithLineThrough = divsWithLineThrough.length;
         setDivLength(numOfDivsWithLineThrough)
-    }, [listValue]);
+    }, [divLength]);
 
-    console.log(divLength);
+
 
     return (
         <div className={Styled.main}>
