@@ -9,6 +9,8 @@ const Main = () => {
     const [inputValue, setInputValue] = useState('')
     const [listValue, setListValue] = useState([])
 
+    const [underline, setUnderline] = useState(false)
+
     function changeInput(e) {
         setInputValue(e.target.value);
     }
@@ -45,7 +47,11 @@ const Main = () => {
 
     const numOfDivsWithInputTextContainerClass = listValue.length;
 
-    console.log(numOfDivsWithInputTextContainerClass);
+    function checkBox() {
+        setUnderline(!underline)
+    }
+    console.log(underline);
+
     return (
         <div className={Styled.main}>
             <div className={`${toggle ? Styled["main-bg"] : Styled["add-bg"]}`}>
@@ -55,7 +61,7 @@ const Main = () => {
                 </div>
                 <div className={Styled["input-container"]}>
                     <div className={Styled.box}>
-                        <input className={Styled.check} type="checkbox" />
+                        <input className={`${Styled.check} ${toggle ? '' : Styled['add']}`} type="checkbox" />
                         <input type="text" className={toggle ? '' : Styled["add"]} value={inputValue} onChange={changeInput} placeholder='Create a new todo....' />
                         {inputValue.trim() === '' && null}
                     </div>
@@ -69,8 +75,8 @@ const Main = () => {
                     </div>
                     {listValue.map((value, index) => {
                         return (
-                            <div key={index} className={Styled['input-text-container']}>
-                                <input type="checkbox" />
+                            <div key={index} className={`${Styled['input-text-container']} ${toggle ? '' : Styled['add']}`}>
+                                <input onClick={checkBox} type="checkbox" />
                                 <h3>{value}</h3>
                             </div>
                         )
