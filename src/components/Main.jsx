@@ -8,7 +8,11 @@ const Main = () => {
     const [inputValue, setInputValue] = useState('');
     const [listValue, setListValue] = useState([]);
     const [underline, setUnderline] = useState(false);
-    const [divLength, setDivLength] = useState('')
+
+    function getUnderlineClass() {
+        return underline ? Styled['underlines'] : '';
+    }
+
 
     function changeInput(e) {
         setInputValue(e.target.value);
@@ -18,14 +22,25 @@ const Main = () => {
         setToggle(!toggle);
     };
 
-    const handleKeyPress = (event) => {
-        if (event.keyCode === 13) {
-            setListValue([...listValue, inputValue]);
-            setInputValue('');
-        }
-    };
+    useEffect(() => {
+        function handleKeyPress(event) {
+            if (inputValue.trim() === '') {
+                return;
+            }
 
-    document.addEventListener('keydown', handleKeyPress);
+            if (event.keyCode === 13) {
+                setListValue([...listValue, inputValue]);
+                setInputValue('');
+            }
+
+        }
+
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+    }, [inputValue]);
 
     useEffect(() => {
         if (!toggle) {
@@ -33,19 +48,23 @@ const Main = () => {
         } else {
             document.body.style.backgroundColor = 'initial';
         }
-
-        return () => {
-            document.body.style.backgroundColor = 'initial';
-        };
-    }, [toggle]);
+    }, [toggle])
 
     const numOfDivsWithInputTextContainerClass = listValue.length;
+
+    const [divLength, setDivLength] = useState(numOfDivsWithInputTextContainerClass)
+
+
+    useEffect(() => {
+        setDivLength(numOfDivsWithInputTextContainerClass)
+    }, [numOfDivsWithInputTextContainerClass])
 
     function checkBox(e) {
         const id = e.target.parentElement.getAttribute("id");
         const element = document.querySelector(`#${id} h3`);
 
         const h3Element = e.target.nextElementSibling;
+
         if (e.target.checked) {
             h3Element.style.textDecoration = "line-through";
             h3Element.style.color = "hsl(236, 33%, 92%)";
@@ -56,11 +75,6 @@ const Main = () => {
         console.log(id);
     }
 
-    useEffect(() => {
-        const divsWithLineThrough = document.querySelectorAll('.input-text-container h3[style*="text-decoration: line-through"]');
-        const numOfDivsWithLineThrough = divsWithLineThrough.length;
-        setDivLength(numOfDivsWithLineThrough)
-    }, [divLength]);
 
 
 
@@ -80,7 +94,7 @@ const Main = () => {
                 </div>
                 <div className={Styled['input']}>
                     <div className={`${Styled.regularInput} ${toggle ? '' : Styled.add}`}>
-                        <h3>{numOfDivsWithInputTextContainerClass} item(s) left</h3>
+                        <h3>{divLength} item(s) left</h3>
                         <h3>active</h3>
                         <h3>Completed</h3>
                         <h3>Clear Completed</h3>
