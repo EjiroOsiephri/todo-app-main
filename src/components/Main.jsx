@@ -63,6 +63,7 @@ const Main = () => {
         const id = e.target.parentElement.getAttribute("id");
         const element = document.querySelector(`#${id} h3`);
 
+
         const h3Element = e.target.nextElementSibling;
 
         if (e.target.checked) {
@@ -72,7 +73,14 @@ const Main = () => {
             h3Element.style.textDecoration = "none";
             h3Element.style.color = "hsl(235, 19%, 35%)";
         }
-        console.log(id);
+        const getId = document.getElementById(`${id}`)
+
+        if (h3Element.style.textDecoration === "line-through") {
+            setDivLength(preValue => preValue - 1)
+        } else if (h3Element.style.textDecoration === "none") {
+            setDivLength(preValue => preValue + 1)
+        }
+
     }
 
 
