@@ -7,11 +7,8 @@ const Main = () => {
     const [toggle, setToggle] = useState(true);
     const [inputValue, setInputValue] = useState('');
     const [listValue, setListValue] = useState([]);
-    const [underline, setUnderline] = useState(false);
+    const [underline, setUnderline] = useState();
 
-    function getUnderlineClass() {
-        return underline ? Styled['underlines'] : '';
-    }
 
 
     function changeInput(e) {
@@ -59,6 +56,8 @@ const Main = () => {
         setDivLength(numOfDivsWithInputTextContainerClass)
     }, [numOfDivsWithInputTextContainerClass])
 
+    const [h3Element, setH3Element] = useState()
+
     function checkBox(e) {
         const id = e.target.parentElement.getAttribute("id");
         const element = document.querySelector(`#${id} h3`);
@@ -75,16 +74,35 @@ const Main = () => {
         }
         const getId = document.getElementById(`${id}`)
 
+        setUnderline(getId)
+
         if (h3Element.style.textDecoration === "line-through") {
             setDivLength(preValue => preValue - 1)
         } else if (h3Element.style.textDecoration === "none") {
             setDivLength(preValue => preValue + 1)
         }
 
+        setH3Element(h3Element)
+
     }
 
+    const active = () => {
+        if (h3Element.style.textDecoration === "line-through") {
+            underline.style.display = 'none'
+        }
+        else if (h3Element.style.textDecoration === "none") {
+            underline.style.display = 'flex'
+        }
+    }
 
-
+    const completed = () => {
+        if (h3Element.style?.textDecoration === "line-through") {
+            underline.style.display = 'flex'
+        }
+        if (h3Element.style.textDecoration === "none") {
+            underline.style.display = 'none'
+        }
+    }
 
     return (
         <div className={Styled.main}>
@@ -103,9 +121,8 @@ const Main = () => {
                 <div className={Styled['input']}>
                     <div className={`${Styled.regularInput} ${toggle ? '' : Styled.add}`}>
                         <h3>{divLength} item(s) left</h3>
-                        <h3>active</h3>
-                        <h3>Completed</h3>
-                        <h3>Clear Completed</h3>
+                        <h3 onClick={active}>active</h3>
+                        <h3 onClick={completed} >Completed</h3>
                     </div>
                     {listValue.map((value, index) => {
                         return (

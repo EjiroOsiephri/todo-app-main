@@ -132,7 +132,7 @@ input[type="text"] {
 .regularInput {
   margin: 0.9em auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 60%;
   color: $VeryDarkDesaturatedBlue;
   font-weight: 300;
@@ -165,8 +165,12 @@ input[type="text"] {
 }
 @media (min-width: 375px) and (max-width: 675px) {
   .regularInput {
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    width: 90%;
+  }
+  .regularInput h3 {
+    font-size: 13px;
+    margin-right: 1em;
   }
   input[type="text"] {
     width: 100%;
@@ -191,7 +195,11 @@ input[type="text"] {
     width: 100%;
   }
   .regularInput {
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    width: 95%;
+  }
+  .regularInput h3 {
+    font-size: 13px;
+    margin-right: 1em;
   }
 }
